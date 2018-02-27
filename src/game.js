@@ -1,13 +1,12 @@
 function Game (player1, player2){
-  this._player1 = player1;
-  this._player2 = player2;
-  this._currentTurn = this._player1;
+  this._players = [player1, player2]
+  this._currentTurn = this._players[0]
 }
 
 Game.prototype.switchTurn = function(){
-  if (this._currentTurn === this._player1) {
-    return this._currentTurn = this._player2;
+  if (this._players.indexOf(this._currentTurn) === 0) {
+    this._currentTurn = this._players[1]
   } else {
-    return this._currentTurn = this._player1;
+    this._currentTurn = this._players[0]
   }
 }
