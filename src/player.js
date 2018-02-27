@@ -3,13 +3,13 @@ function Player(name){
 }
 
 Player.prototype.getName = function(){
-  return this.name
+  return this._name
 }
 
 Player.prototype.setWeapon = function(weapon){
-  this.weapon = weapon
+  this._weapon = weapon
 }
 
 Player.prototype.getWeapon = function(){
-  return this.weapon
+  return this._weapon
 }
