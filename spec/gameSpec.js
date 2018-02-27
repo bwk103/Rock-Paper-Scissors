@@ -9,15 +9,13 @@ describe('Game', () => {
       expect(game._player1).not.toBe(null);
       expect(game._player2).not.toBe(null);
     })
-    it('player 1 has the first turn', () => {
-      expect(game._currentTurn).toBe(james)
-    })
   });
 
   describe('#switchTurn', () => {
     it('switches the currentTurn', () => {
+      var firstPlayer = game._currentTurn
       game.switchTurn()
-      expect(game._currentTurn).toBe(mia)
+      expect(game._currentTurn).not.toBe(firstPlayer)
     })
   })
 })
