@@ -1,7 +1,33 @@
 describe('Game', () => {
 
-  const james = jasmine.createSpyObj('james', ['name'])
-  const mia = jasmine.createSpyObj('mia', ['name'])
+  const rock = {
+    getType: function(){
+      return 'rock'
+    },
+    isBetter: function(){
+      return false
+    }
+  };
+  const paper = {
+    getType: function(){
+      return 'paper'
+    },
+    isBetter: function(){
+      return true
+    }
+  };
+  const mia = {
+    name: function(){
+      return 'Mia'
+    },
+    weapon: paper
+  };
+  const james = {
+    name: function(){
+      return 'James'
+    },
+    weapon: rock
+  };
   const game = new Game(james, mia)
 
   describe('defaults', () => {
@@ -16,6 +42,26 @@ describe('Game', () => {
       var firstPlayer = game._currentTurn
       game.switchTurn()
       expect(game._currentTurn).not.toBe(firstPlayer)
+    })
+  })
+
+  describe('#setResult', () => {
+    it('checks whether there has been a tie', () => {
+      var tiedGame = new Game(mia, mia)
+      game.setResult()
+      expect(game._isTie).toBe(true)
+    })
+
+    it('determines the winning player', () => {
+      game.setResult()
+      expect(game._winner).toBe(mia);
+    })
+  })
+
+  describe('#getResult', () => {
+    it('returns the winning player', () => {
+      game.setResult()
+      expect(game.getResult()).toBe(mia)
     })
   })
 })
