@@ -19,8 +19,10 @@ Game.prototype.setResult = function(){
     this._isTie = true
   } else if (this._player1._weapon.isBetter(this._player2._weapon)) {
     this._winner = this._player1
+    this._loser = this._player2
   } else {
     this._winner = this._player2
+    this._loser = this._player1
   }
 }
 
@@ -28,6 +30,15 @@ Game.prototype.getResult = function(){
   if (this._isTie) {
     return 'tie'
   } else {
-    return this._winner
+    return this._finalMessage()
   }
+}
+
+Game.prototype._finalMessage = function(){
+  var winnerName = this._winner.getName();
+  var winnerWeapon = this._winner._weapon.getType();
+  var verb = this._winner._weapon.getVerb()
+  var loserName = this._loser.getName()
+  var loserWeapon = this._loser._weapon.getType()
+  return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
 }

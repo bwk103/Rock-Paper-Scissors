@@ -108,4 +108,39 @@ describe('Weapon', () => {
       })
     })
   })
+
+  describe('#getVerb', () => {
+    describe('returns the correct verb given the two weapons', () => {
+      it('rock crushes scissors', () => {
+        expect(rock.getVerb(scissors)).toBe('crushes')
+      })
+      it('rock crushes lizard', () => {
+        expect(rock.getVerb(lizard)).toBe('crushes')
+      })
+      it('paper covers rock', () => {
+        expect(paper.getVerb(rock)).toBe('covers')
+      })
+      it('paper disproves spock', () => {
+        expect(paper.getVerb(spock)).toBe('disproves')
+      })
+      it('scissors cuts paper', () => {
+        expect(scissors.getVerb(paper)).toBe('cuts')
+      })
+      it('scissors decapitates lizard', () => {
+        expect(scissors.getVerb(lizard)).toBe('decapitates')
+      })
+      it('lizard poisons spock', () => {
+        expect(lizard.getVerb(spock)).toBe('poisons')
+      })
+      it('lizard eats paper', () => {
+        expect(lizard.getVerb(paper)).toBe('eats')
+      })
+      it('spock smashes scissors', () => {
+        expect(spock.getVerb(scissors)).toBe('smashes')
+      })
+      it('spock vapourises rock', () => {
+        expect(spock.getVerb(rock)).toBe('vapourises')
+      })
+    })
+  })
 })

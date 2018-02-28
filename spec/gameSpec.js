@@ -16,21 +16,24 @@ describe('Game', () => {
     },
     isBetter: function(){
       return true
+    },
+    getVerb: function(){
+      return 'wraps'
     }
   };
   const mia = {
-    name: function(){
+    getName: function(){
       return 'Mia'
     },
     _weapon: paper
   };
-  const james = {
-    name: function(){
-      return 'James'
+  const alan = {
+    getName: function(){
+      return 'Alan'
     },
     _weapon: rock
   };
-  const game = new Game(james, mia)
+  const game = new Game(alan, mia)
 
   describe('defaults', () => {
     it('initializes with two players', () => {
@@ -49,7 +52,7 @@ describe('Game', () => {
 
   describe('#setResult', () => {
     it('checks whether there has been a tie', () => {
-      var tiedGame = new Game(james, james)
+      var tiedGame = new Game(alan, alan)
       tiedGame.setResult()
       expect(tiedGame._isTie).toBe(true)
     })
@@ -63,11 +66,12 @@ describe('Game', () => {
   describe('#getResult', () => {
     it('returns the winning player', () => {
       game.setResult()
-      expect(game.getResult()).toBe(mia)
+      var message = "Mia's paper wraps Alan's rock"
+      expect(game.getResult()).toBe(message)
     })
 
     it('returns tie if the match is a tie', () => {
-      var tiedGame = new Game(james, james)
+      var tiedGame = new Game(alan, alan)
       tiedGame.setResult()
       expect(tiedGame.getResult()).toBe('tie')
     })
