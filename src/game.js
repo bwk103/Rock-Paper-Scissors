@@ -1,6 +1,6 @@
 "use strict"
 
-function Game (player1, player2){
+function Game (player1, player2 = new Computer()){
   this._player1 = player1
   this._player2 = player2
   this._currentTurn = this._player1
@@ -28,7 +28,7 @@ Game.prototype.setResult = function(){
 
 Game.prototype.getResult = function(){
   if (this._isTie) {
-    return 'tie'
+    return "It's a tie"
   } else {
     return this._finalMessage()
   }
@@ -37,8 +37,8 @@ Game.prototype.getResult = function(){
 Game.prototype._finalMessage = function(){
   var winnerName = this._winner.getName();
   var winnerWeapon = this._winner._weapon.getType();
-  var verb = this._winner._weapon.getVerb()
   var loserName = this._loser.getName()
   var loserWeapon = this._loser._weapon.getType()
+  var verb = this._winner._weapon.getVerb(this._loser._weapon);
   return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
 }

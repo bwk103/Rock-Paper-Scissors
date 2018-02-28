@@ -73,7 +73,7 @@ describe('Game', () => {
     it('returns tie if the match is a tie', () => {
       var tiedGame = new Game(alan, alan)
       tiedGame.setResult()
-      expect(tiedGame.getResult()).toBe('tie')
+      expect(tiedGame.getResult()).toBe("It's a tie")
     })
   })
 })
