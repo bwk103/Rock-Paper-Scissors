@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Rock, Paper, Scissors, Lizard, Spock</h1>
+    </div>
+    <div class="player-details">
+      <form>
+        <label for="player1">Player 1 Name:</label>
+        <input id="player1" type="text" name="player1">
+        <label for="player2">Player 2 Name:</label>
+        <input id="player2" type="text" name="player2">
+        <input id="play" type="submit" value="Play"></form>
+    </div>
+    <div class="weapons">
+      <p>Select Weapon</p>
+      <form>
+        <button class="weapon" data-weapon="rock">Rock</button>
+        <button class="weapon" data-weapon="paper">Paper</button>
+        <button class="weapon" data-weapon="scissors">Scissors</button>
+        <button class="weapon" data-weapon="lizard">Lizard</button>
+        <button class="weapon" data-weapon="spock">Spock</button>
+      </form>
+    </div>
+    <div class="result">
+      <p id="result-message"></p>
+      <button id="replay">Play Again</button>
+    </div>
+    <div class="footer">
+      <p>Ben Kielty - 2018</p>
+    </div>
+    <script src="src/computer.js"></script>
+    <script src="src/player.js"></script>
+    <script src="src/weapon.js"></script>
+    <script src="src/game.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+    <script src="logic.js"></script>
+  </body>
+</html>
