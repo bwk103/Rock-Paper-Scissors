@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Open+Sans:300');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #F1F2F2;
+  color: #17172D;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  border: 3px solid white;
+  text-align: center;
+}
+
+a.play-button {
+  text-decoration: none;
+  color: #17172D;
+  font-size: 25px;
+  padding: 2px;
+}
+
+input {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+  border: 1px solid #17172D;
+  border-radius: 16px;
+}
+
+.site {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-content {
+  flex: 1;
+}
+
+.svg-inline--fa{
+  font-size: 15em;
+  margin: 10px;
+}
+
+.svg-inline--fa:hover {
+  cursor:pointer;
+}
+
+.header {
+  border: 1px solid #EAE0D5;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.player-details {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.player-details label {
+  font-size: 25px;
+}
+
+.weapons {
+  border-top:
+  background: white;
+  padding: 10px 0;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.result {
+  display: block;
+  height: 80px;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+footer {
+  background: white;
+  text-align: center;
+  font-size: 12px;
+  line-height: 50%;
+}
+
+.hide {
+  display: none;
+}
