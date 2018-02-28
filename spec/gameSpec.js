@@ -20,13 +20,13 @@ describe('Game', () => {
     name: function(){
       return 'Mia'
     },
-    weapon: paper
+    _weapon: paper
   };
   const james = {
     name: function(){
       return 'James'
     },
-    weapon: rock
+    _weapon: rock
   };
   const game = new Game(james, mia)
 
@@ -47,9 +47,9 @@ describe('Game', () => {
 
   describe('#setResult', () => {
     it('checks whether there has been a tie', () => {
-      var tiedGame = new Game(mia, mia)
-      game.setResult()
-      expect(game._isTie).toBe(true)
+      var tiedGame = new Game(james, james)
+      tiedGame.setResult()
+      expect(tiedGame._isTie).toBe(true)
     })
 
     it('determines the winning player', () => {
@@ -62,6 +62,12 @@ describe('Game', () => {
     it('returns the winning player', () => {
       game.setResult()
       expect(game.getResult()).toBe(mia)
+    })
+
+    it('returns tie if the match is a tie', () => {
+      var tiedGame = new Game(james, james)
+      tiedGame.setResult()
+      expect(tiedGame.getResult()).toBe('tie')
     })
   })
 })

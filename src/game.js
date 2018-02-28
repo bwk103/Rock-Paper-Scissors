@@ -1,33 +1,37 @@
+"use strict"
+
 function Game (player1, player2){
-  this._players = [player1, player2]
-  this._currentTurn = this._players[0]
+  this._player1 = player1
+  this._player2 = player2
+  this._currentTurn = this._player1
 }
 
 Game.prototype.switchTurn = function(){
-  if (this._players.indexOf(this._currentTurn) === 0) {
-    this._currentTurn = this._players[1]
+  if (this._currentTurn === this._player1) {
+    this._currentTurn = this._player2
   } else {
-    this._currentTurn = this._players[0]
+    this._currentTurn = this._player1
   }
 }
 
 Game.prototype.setResult = function(){
-  if (this._isTied()) {
+  if (this._player1._weapon.getType() === this._player2._weapon.getType()) {
     this._isTie = true
-  }
-  if (this._players[0].weapon.isBetter(this._players[1])){
-    this._winner = this._players[0]
+  } else if (this._player1._weapon.isBetter(this._player2._weapon)) {
+    this._winner = this._player1
   } else {
-    this._winner = this._players[1]
+    this._winner = this._player2
   }
 }
 
 Game.prototype.getResult = function(){
-  return this._winner
+  if (this._isTie) {
+    return 'tie'
+  } else {
+    return this._winner
+  }
 }
 
-Game.prototype._isTied = function(){
-  return this._players.reduce((a, b) => {
-    return a.type === b.type
-  });
-}
+// Game.prototype._isTied = function(){
+//   return this._player1._weapon === this._player2._weapon
+// }
