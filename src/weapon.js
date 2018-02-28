@@ -2,9 +2,11 @@
 
 function Weapon(type){
   this._rules = {
-    'rock': 'scissors',
-    'paper': 'rock',
-    'scissors': 'paper'
+    'rock': ['scissors', 'lizard'],
+    'paper': ['rock', 'spock'],
+    'scissors': ['paper', 'lizard'],
+    'lizard': ['spock', 'paper'],
+    'spock': ['scissors', 'rock']
   };
   this._type = type
 }
@@ -14,5 +16,5 @@ Weapon.prototype.getType = function(){
 }
 
 Weapon.prototype.isBetter = function(weapon){
-  return this._rules[this._type] === weapon._type
+  return this._rules[this._type].includes(weapon._type)
 }
