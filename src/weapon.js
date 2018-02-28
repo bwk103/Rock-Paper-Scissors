@@ -1,3 +1,5 @@
+"use strict";
+
 function Weapon(type){
   this._rules = {
     'rock': 'scissors',

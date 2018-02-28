@@ -1,3 +1,5 @@
+"use strict";
+
 describe('Player', () => {
 
   const player = new Player('Bill')

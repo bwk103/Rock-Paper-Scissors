@@ -31,7 +31,3 @@ Game.prototype.getResult = function(){
     return this._winner
   }
 }
-
-// Game.prototype._isTied = function(){
-//   return this._player1._weapon === this._player2._weapon
-// }

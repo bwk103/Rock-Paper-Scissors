@@ -1,3 +1,5 @@
+"use strict";
+
 describe('Game', () => {
 
   const rock = {

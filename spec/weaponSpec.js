@@ -1,3 +1,5 @@
+"use strict";
+
 describe('Weapon', () => {
   const paper = new Weapon('paper')
   const rock = new Weapon('rock')
@@ -25,7 +27,7 @@ describe('Weapon', () => {
     it('confirms that paper beats rock', () => {
       expect(paper.isBetter(rock)).toBe(true);
     })
-  
+
     it('confirms that scissors beats paper', () => {
       expect(scissors.isBetter(paper)).toBe(true);
     })
