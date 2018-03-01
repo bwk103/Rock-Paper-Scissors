@@ -82,6 +82,23 @@ label {
   justify-content: space-around;
   flex-wrap: wrap;
   border-bottom: 1px solid #EAE0D5;
+  visibility: hidden;
+}
+
+.weapons > * {
+  visibility: visible;
+  transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+}
+
+.weapons:hover > * {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+
+.weapons > *:hover {
+  opacity: 1;
+  transform: scale(1);
+  transition-delay: 0ms, 0ms;
 }
 
 .weapon {

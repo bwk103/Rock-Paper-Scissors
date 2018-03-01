@@ -10,7 +10,9 @@ $(document).ready(function(){
 
   $('button.weapon').on('click', function(e){
     e.preventDefault();
-    takeTurn()
+    var weapon = makeWeapon($(this).attr('data-weapon'))
+    game._currentTurn.setWeapon(weapon)
+    isGameOver()
   })
 
   $('#replay').on('click', function(){
@@ -27,10 +29,11 @@ $(document).ready(function(){
       console.log(game)
     } else {
       game = new Game(player1)
+      console.log(game)
     }
   }
 
-  function takeTrun(){
+  function takeTurn(){
     var weapon = makeWeapon($(this).attr('data-weapon'))
     game._currentTurn.setWeapon(weapon)
     isGameOver()
