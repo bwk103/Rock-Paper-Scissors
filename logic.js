@@ -17,11 +17,13 @@ $(document).ready(function(){
   function endGame(){
     game.setResult()
     $('#result-message').text(game.getResult())
+      $('#replay').toggleClass('hide')
   }
 
   $('#replay').on('click', function(){
     game = new Game(getPlayer($('#player1').val()))
     $('#result-message').text('')
+    $('#replay').toggleClass('hide')
   })
 
 })
