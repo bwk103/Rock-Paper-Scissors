@@ -1,36 +1,42 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Open+Sans:300');
-
 body {
-  font-family: 'Open Sans', sans-serif;
   background: #F1F2F2;
   color: #17172D;
+  font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
+  border: 3px solid white;
   font-family: 'Montserrat', sans-serif;
   font-size: 50px;
-  border: 3px solid white;
   text-align: center;
-}
-
-a.play-button {
-  text-decoration: none;
-  color: #17172D;
-  font-size: 25px;
-  font-weight: bold;
-  padding: 2px;
 }
 
 input {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 25px;
   border: 1px solid #17172D;
   border-radius: 16px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+  text-align: center;
 }
 
 label {
   margin-right: 10px;
+}
+
+footer {
+  background: #F1F2F2;
+  border-top: 1px solid #EAE0D5;
+  font-size: 12px;
+  line-height: 50%;
+  text-align: center;
+}
+
+.play-button {
+  color: #17172D;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 2px;
+  text-decoration: none;
 }
 
 .site {
@@ -53,20 +59,20 @@ label {
 }
 
 .header {
-  border: 1px solid #EAE0D5;
+  align-items: flex-start;
   background: white;
+  border: 1px solid #EAE0D5;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
 }
 
 .player-details {
-  margin-top: 20px;
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-start;
+  margin-top: 20px;
 }
 
 .player-details label {
@@ -74,20 +80,20 @@ label {
 }
 
 .weapons {
-  padding: 10px 0;
-  margin-top: 20px;
-  padding-bottom:30px;
+  border-bottom: 1px solid #EAE0D5;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   flex-wrap: wrap;
-  border-bottom: 1px solid #EAE0D5;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 10px 0;
+  padding-bottom:30px;
   visibility: hidden;
 }
 
 .weapons > * {
-  visibility: visible;
   transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+  visibility: visible;
 }
 
 .weapons:hover > * {
@@ -102,34 +108,26 @@ label {
 }
 
 .weapon {
+  background: white;
   border: 2px solid #17172D;
   border-radius: 16px;
-  background: white;
 }
 
 .result {
-  margin-top: 40px;
-  display: block;
-  height: 180px;
-  font-size: 1.5em;
-  text-align: center;
   background: #F1F2F2;
+  display: block;
+  font-size: 1.5em;
+  height: 180px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.hide {
+  visibility: hidden;
 }
 
 #result-message {
   background: white;
   border-radius: 16px;
   font-size: 1.5em;
-}
-
-footer {
-  border-top: 1px solid #EAE0D5;
-  background: #F1F2F2;
-  text-align: center;
-  font-size: 12px;
-  line-height: 50%;
-}
-
-.hide {
-  visibility: hidden;
 }

@@ -28,7 +28,7 @@ $(document).ready(function(){
       var player2 = getPlayer($('#player2').val())
       game = new Game(player1, player2)
     } else {
-      game = new Game(player1)
+      game = new Game(player1) 
     }
   }
 
