@@ -6,6 +6,7 @@ $(document).ready(function(){
   $('#play').on('click', function(e){
     e.preventDefault()
     startGame()
+    $('.player-details').addClass('hide')
   })
 
   $('button.weapon').on('click', function(e){
@@ -26,10 +27,8 @@ $(document).ready(function(){
     if (isPlayer2()){
       var player2 = getPlayer($('#player2').val())
       game = new Game(player1, player2)
-      console.log(game)
     } else {
       game = new Game(player1)
-      console.log(game)
     }
   }
 
@@ -42,7 +41,7 @@ $(document).ready(function(){
   function endGame(){
     game.setResult()
     $('#result-message').text(game.getResult())
-      $('#replay').toggleClass('hide')
+    $('#replay').toggleClass('hide')
   }
 
   function isGameOver(){

@@ -119,6 +119,7 @@ label {
 #result-message {
   background: white;
   border-radius: 16px;
+  font-size: 1.5em;
 }
 
 footer {
@@ -130,5 +131,5 @@ footer {
 }
 
 .hide {
-  display: none;
+  visibility: hidden;
 }
