@@ -31,6 +31,10 @@ footer {
   text-align: center;
 }
 
+button:focus {
+  outline:0 !important;
+}
+
 .play-button {
   color: #17172D;
   font-size: 25px;
