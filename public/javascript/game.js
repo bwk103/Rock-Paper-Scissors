@@ -1,17 +1,16 @@
 "use strict"
 
 function Game (player1, player2 = new Computer()){
+  this._players = [player1, player2]
   this._player1 = player1
   this._player2 = player2
-  this._currentTurn = this._player1
+  this._currentPlayer = this._player1
 }
 
-Game.prototype.switchTurn = function(){
-  if (this._currentTurn === this._player1) {
-    this._currentTurn = this._player2
-  } else {
-    this._currentTurn = this._player1
-  }
+Game.prototype.switchPlayer = function(){
+  this._currentPlayer = this._players.filter(player => {
+    return player !== this._currentPlayer
+  })[0];
 }
 
 Game.prototype.setResult = function(){

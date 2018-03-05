@@ -50,9 +50,9 @@ describe('Game', () => {
 
   describe('#switchTurn', () => {
     it('switches the currentTurn', () => {
-      var firstPlayer = game._currentTurn
+      var firstPlayer = game._currentPlayer
       game.switchTurn()
-      expect(game._currentTurn).not.toBe(firstPlayer)
+      expect(game._currentPlayer).not.toBe(firstPlayer)
     })
   })
 
