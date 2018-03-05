@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bwk103/Rock-Paper-Scissors.svg?branch=master)](https://travis-ci.org/bwk103/Rock-Paper-Scissors)
+
 # Rock Paper Scissors (RPS)
 
 Are you desperate to play Rock Paper Scissors but have no one to play with?  Are
