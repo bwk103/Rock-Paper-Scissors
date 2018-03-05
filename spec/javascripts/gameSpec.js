@@ -33,9 +33,15 @@ describe('Game', () => {
     },
     _weapon: rock
   };
+  const bondo = {
+    getName: function(){
+      return 'Bondo'
+    },
+    _weapon: rock
+  }
   const james = {
     getName: function(){
-      return 'Alan'
+      return 'James'
     }
   };
 
@@ -48,17 +54,17 @@ describe('Game', () => {
     })
   });
 
-  describe('#switchTurn', () => {
+  describe('#switchCurrentPlayer', () => {
     it('switches the currentTurn', () => {
       var firstPlayer = game._currentPlayer
-      game.switchTurn()
+      game.switchCurrentPlayer()
       expect(game._currentPlayer).not.toBe(firstPlayer)
     })
   })
 
   describe('#setResult', () => {
     it('checks whether there has been a tie', () => {
-      var tiedGame = new Game(alan, alan)
+      var tiedGame = new Game(alan, bondo)
       tiedGame.setResult()
       expect(tiedGame._isTie).toBe(true)
     })
@@ -77,7 +83,7 @@ describe('Game', () => {
     })
 
     it('returns tie if the match is a tie', () => {
-      var tiedGame = new Game(alan, alan)
+      var tiedGame = new Game(alan, bondo)
       tiedGame.setResult()
       expect(tiedGame.getResult()).toBe("It's a tie")
     })
@@ -86,7 +92,6 @@ describe('Game', () => {
   describe('#isComplete', () => {
     it('returns true when the game is complete', () => {
       var game = new Game(alan, alan)
-      game.setResult()
       expect(game.isComplete()).toBe(true)
     })
     it('returns false when the game is incomplete', () => {

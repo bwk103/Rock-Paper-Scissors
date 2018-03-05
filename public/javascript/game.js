@@ -2,26 +2,21 @@
 
 function Game (player1, player2 = new Computer()){
   this._players = [player1, player2]
-  this._player1 = player1
-  this._player2 = player2
-  this._currentPlayer = this._player1
+  this._currentPlayer = this._players[0]
 }
 
-Game.prototype.switchPlayer = function(){
-  this._currentPlayer = this._players.filter(player => {
-    return player !== this._currentPlayer
-  })[0];
+Game.prototype.switchCurrentPlayer = function(){
+  this._currentPlayer = this._otherPlayer(this._currentPlayer)
 }
 
 Game.prototype.setResult = function(){
-  if (this._player1._weapon.getType() === this._player2._weapon.getType()) {
+  var otherPlayer = this._otherPlayer(this._currentPlayer)
+  if (this._isATie()) {
     this._isTie = true
-  } else if (this._player1._weapon.isBetter(this._player2._weapon)) {
-    this._winner = this._player1
-    this._loser = this._player2
+  } else if (this._currentPlayer._weapon.isBetter(otherPlayer._weapon)) {
+    this._winner = this._currentPlayer
   } else {
-    this._winner = this._player2
-    this._loser = this._player1
+    this._winner = otherPlayer
   }
 }
 
@@ -34,14 +29,29 @@ Game.prototype.getResult = function(){
 }
 
 Game.prototype.isComplete = function(){
-  return this._player1._weapon !== undefined && this._player2._weapon !== undefined
+  return this._players.filter(player => {
+    return player._weapon !== undefined
+  }).length === 2;
+}
+
+Game.prototype._isATie = function(){
+  var currentPlayerWeapon = this._currentPlayer._weapon.getType()
+  var otherPlayerWeapon = this._otherPlayer(this._currentPlayer)._weapon.getType()
+  return currentPlayerWeapon === otherPlayerWeapon
+}
+
+Game.prototype._otherPlayer = function(originalPlayer){
+  return this._players.filter(player => {
+    return player !== originalPlayer
+  })[0];
 }
 
 Game.prototype._finalMessage = function(){
+  var loser = this._otherPlayer(this._winner)
   var winnerName = this._winner.getName();
   var winnerWeapon = this._winner._weapon.getType();
-  var loserName = this._loser.getName()
-  var loserWeapon = this._loser._weapon.getType()
-  var verb = this._winner._weapon.getVerb(this._loser._weapon);
+  var loserName = loser.getName()
+  var loserWeapon = loser._weapon.getType()
+  var verb = this._winner._weapon.getVerb(loser._weapon);
   return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
 }
