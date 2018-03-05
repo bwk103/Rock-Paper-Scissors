@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   $('button.weapon').on('click', function(e){
     e.preventDefault();
-    var weapon = makeWeapon($(this).attr('data-weapon'))
+    var weapon = new Weapon($(this).attr('data-weapon'))
     game._currentTurn.setWeapon(weapon)
     isGameOver()
   })
@@ -24,9 +24,9 @@ $(document).ready(function(){
   })
 
   function startGame(){
-    var player1 = getPlayer($('#player1').val())
+    var player1 = new Player($('#player1').val())
     if (isPlayer2()){
-      var player2 = getPlayer($('#player2').val())
+      var player2 = new Player($('#player2').val())
       game = new Game(player1, player2)
     } else {
       game = new Game(player1)
@@ -46,7 +46,7 @@ $(document).ready(function(){
   }
 
   function isGameOver(){
-    if (game._player1._weapon !== undefined && game._player2._weapon !== undefined){
+    if (game.isComplete()){
       endGame()
     }
     else {
@@ -58,12 +58,4 @@ $(document).ready(function(){
 
 function isPlayer2(){
   return $('#player2').val() !== ''
-}
-
-function getPlayer(name){
-  return new Player(name)
-}
-
-function makeWeapon(string){
-  return new Weapon(string)
 }

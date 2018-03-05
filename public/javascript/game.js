@@ -34,6 +34,10 @@ Game.prototype.getResult = function(){
   }
 }
 
+Game.prototype.isComplete = function(){
+  return this._player1._weapon !== undefined && this._player2._weapon !== undefined
+}
+
 Game.prototype._finalMessage = function(){
   var winnerName = this._winner.getName();
   var winnerWeapon = this._winner._weapon.getType();

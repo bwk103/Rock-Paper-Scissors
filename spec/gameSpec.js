@@ -33,6 +33,12 @@ describe('Game', () => {
     },
     _weapon: rock
   };
+  const james = {
+    getName: function(){
+      return 'Alan'
+    }
+  };
+
   const game = new Game(alan, mia)
 
   describe('defaults', () => {
@@ -74,6 +80,18 @@ describe('Game', () => {
       var tiedGame = new Game(alan, alan)
       tiedGame.setResult()
       expect(tiedGame.getResult()).toBe("It's a tie")
+    })
+  })
+
+  describe('#isComplete', () => {
+    it('returns true when the game is complete', () => {
+      var game = new Game(alan, alan)
+      game.setResult()
+      expect(game.isComplete()).toBe(true)
+    })
+    it('returns false when the game is incomplete', () => {
+      var game = new Game(alan, james)
+      expect(game.isComplete()).toBe(false)
     })
   })
 })
