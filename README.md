@@ -48,7 +48,7 @@ and run the following:
 After the dependencies have been installed, you're good to go.  Launch the
 application using the following command:
 
-`ruby app.rb`
+`rackup config.ru`
 
 And in your browser, navigate to the appropriate port.
 
@@ -78,15 +78,20 @@ again.
 
 ## Running the tests
 
-In order to run my tests, execute the following command and the tests will
+In order to run my javascript tests, execute the following command and the tests will
 appear in your browser.
 
 `open SpecRunner.html`
+
+To see my integration tests, simply run the following command:
+
+`rspec`
 
 ## Built With
 
 - [Jamine Standalone](https://github.com/jasmine/jasmine/releases) - JavaScript testing framework
 - [Sinata](http://sinatrarb.com/)
+- [Capybara](https://github.com/teamcapybara/capybara) - integration tests
 - [Heroku](http://heroku.com) - hosting application
 
 ## Acknowledgements
