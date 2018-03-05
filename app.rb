@@ -1,5 +1,9 @@
-require 'sinatra'
+require 'sinatra/base'
 
-get '/' do
-  erb :index
+class RPSApp < Sinatra::Base
+
+  get '/' do
+    erb :index
+  end
+
 end
