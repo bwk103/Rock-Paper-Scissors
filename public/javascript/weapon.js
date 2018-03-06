@@ -1,7 +1,7 @@
 "use strict";
 
-function Weapon(type){
-  this._rules = {
+var Weapon = (function(type){
+  var rules = {
     'rock': [
               { name: 'scissors', verb: 'crushes' },
               { name: 'lizard', verb: 'crushes' }
@@ -23,27 +23,33 @@ function Weapon(type){
                   { name: 'rock', verb: 'vapourises' }
               ]
   };
-  this._type = type
-}
+  var type = type;
 
-Weapon.prototype.getType = function(){
-  return this._type
-}
+  var getType = function(){
+    return type;
+  }
 
-Weapon.prototype.isBetter = function(weapon){
-  var array = [];
-  this._rules[this._type].forEach(function(item){
-    array.push(item.name)
-  })
-  return array.includes(weapon._type)
-}
-
-Weapon.prototype.getVerb = function(losing_weapon){
-  var verb;
-    this._rules[this._type].forEach(function(item){
-      if (item.name === losing_weapon.getType()){
-        verb = item.verb
-      }
+  var isBetter = function(weapon){
+    var array = [];
+    rules[type].forEach(function(item){
+      array.push(item.name)
     })
+    return array.includes(weapon.getType())
+  }
+
+  var getVerb = function(losing_weapon){
+    var verb;
+      rules[type].forEach(function(item){
+        if (item.name === losing_weapon.getType()){
+          verb = item.verb
+        }
+      })
     return verb
-}
+  }
+
+  return {
+    getType: getType,
+    isBetter: isBetter,
+    getVerb: getVerb
+  }
+})

@@ -13,7 +13,7 @@ $(document).ready(function(){
   $('button.weapon').on('click', function(e){
     e.preventDefault();
     var weapon = new Weapon($(this).attr('data-weapon'))
-    game._currentPlayer.setWeapon(weapon)
+    game.getCurrentPlayer().setWeapon(weapon)
     isGameOver()
   })
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
 
   function takeTurn(){
     var weapon = makeWeapon($(this).attr('data-weapon'))
-    game._currentPlayer.setWeapon(weapon)
+    game.getCurrentPlayer.setWeapon(weapon)
     isGameOver()
   }
 
@@ -53,7 +53,6 @@ $(document).ready(function(){
       game.switchCurrentPlayer();
     }
   }
-
 })
 
 function isPlayer2(){

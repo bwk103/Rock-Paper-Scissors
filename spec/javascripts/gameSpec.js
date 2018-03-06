@@ -21,27 +21,37 @@ describe('Game', () => {
       return 'wraps'
     }
   };
+
   const mia = {
     getName: function(){
       return 'Mia'
     },
-    _weapon: paper
+    getWeapon: function(){
+      return paper
+    }
   };
   const alan = {
     getName: function(){
       return 'Alan'
     },
-    _weapon: rock
+    getWeapon: function(){
+      return rock
+    }
   };
   const bondo = {
     getName: function(){
       return 'Bondo'
     },
-    _weapon: rock
+    getWeapon: function(){
+      return rock
+    }
   }
   const james = {
     getName: function(){
       return 'James'
+    },
+    getWeapon: function(){
+      return undefined;
     }
   };
 
@@ -49,16 +59,15 @@ describe('Game', () => {
 
   describe('defaults', () => {
     it('initializes with two players', () => {
-      expect(game._player1).not.toBe(null);
-      expect(game._player2).not.toBe(null);
+      expect(game.players.length).toBe(2)
     })
   });
 
   describe('#switchCurrentPlayer', () => {
-    it('switches the currentTurn', () => {
-      var firstPlayer = game._currentPlayer
+    it('switches the currentPlayer', () => {
+      var firstPlayer = game.getCurrentPlayer()
       game.switchCurrentPlayer()
-      expect(game._currentPlayer).not.toBe(firstPlayer)
+      expect(game.getCurrentPlayer()).not.toBe(firstPlayer)
     })
   })
 
@@ -66,12 +75,18 @@ describe('Game', () => {
     it('checks whether there has been a tie', () => {
       var tiedGame = new Game(alan, bondo)
       tiedGame.setResult()
-      expect(tiedGame._isTie).toBe(true)
+      expect(tiedGame.getTieStatus()).toBe(true)
+    })
+
+    it('calls the #isBetter function on currentPlayer weapon', () => {
+      spyOn(alan, 'getWeapon').and.callThrough()
+      game.setResult()
+      expect(alan.getWeapon).toHaveBeenCalled()
     })
 
     it('determines the winning player', () => {
       game.setResult()
-      expect(game._winner).toBe(mia);
+      expect(game.getResult()).toBe("Mia's paper wraps Alan's rock");
     })
   })
 
@@ -91,9 +106,19 @@ describe('Game', () => {
 
   describe('#isComplete', () => {
     it('returns true when the game is complete', () => {
-      var game = new Game(alan, alan)
+      var game = new Game(alan, bondo)
       expect(game.isComplete()).toBe(true)
     })
+
+    it('calls the #getWeapon function on each player', () => {
+      var game = new Game(alan, bondo)
+      spyOn(alan, 'getWeapon').and.callThrough()
+      spyOn(bondo, 'getWeapon').and.callThrough()
+      game.isComplete()
+      expect(alan.getWeapon).toHaveBeenCalled()
+      expect(bondo.getWeapon).toHaveBeenCalled()
+    })
+
     it('returns false when the game is incomplete', () => {
       var game = new Game(alan, james)
       expect(game.isComplete()).toBe(false)

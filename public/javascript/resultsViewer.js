@@ -1,11 +1,18 @@
-function ResultsViewer(element){
-  this.element = element;
-}
+"use strict";
 
-ResultsViewer.prototype.addMessage = function(message){
-  this.element.prepend(message)
-}
+var ResultsViewer = (function(element){
+  var element = element
 
-ResultsViewer.prototype.clearMessage = function(){
-  this.element.html("")
-}
+  var addMessage = function(message){
+    element.prepend(message)
+  };
+
+  var clearMessage = function(){
+    element.html("")
+  }
+
+  return {
+    addMessage: addMessage,
+    clearMessage: clearMessage
+  }
+})

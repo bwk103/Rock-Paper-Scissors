@@ -12,8 +12,8 @@ describe('Player', () => {
 
   describe('#setWeapon', () => {
     it("sets the player's weapon", ()=> {
-      player.setWeapon('Gun')
-      expect(player._weapon).toBe('Gun')
+      player.setWeapon('rock')
+      expect(player.getWeapon()).toBe('rock')
     })
   })
 

@@ -2,7 +2,6 @@
 
 describe('Computer', () => {
   const computer = new Computer()
-  const rock = {};
 
   describe('#getName', () => {
     it('returns Computer', () => {
@@ -12,8 +11,8 @@ describe('Computer', () => {
 
   describe('#getWeapon', () => {
     it('returns the weapon selection', () => {
-      computer._weapon = rock
-      expect(computer.getWeapon()).toBe(rock)
+      var weapons = ['rock', 'paper', 'scissors', 'spock', 'lizard']
+      expect(weapons).toContain(computer.getWeapon().getType())
     })
   })
 })

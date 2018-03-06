@@ -1,19 +1,24 @@
 "use strict";
 
-function Computer(){
-  this._name = 'Computer'
-  this._weapon = new Weapon(this._setWeapon())
-}
+var Computer = (function() {
+  var name = 'Computer'
+  var weapon = new Weapon(setWeapon())
 
-Computer.prototype.getName = function() {
-  return this._name
-}
+  var getName = function(){
+    return name
+  }
 
-Computer.prototype.getWeapon = function() {
-  return this._weapon
-}
+  var getWeapon = function(){
+    return weapon
+  }
 
-Computer.prototype._setWeapon = function(){
-  const weapons = ['rock', 'paper', 'scissors', 'spock', 'lizard']
-  return weapons[Math.floor(Math.random()*weapons.length)]
-}
+  function setWeapon(){
+    const weapons = ['rock', 'paper', 'scissors', 'spock', 'lizard']
+    return weapons[Math.floor(Math.random()*weapons.length)]
+  }
+
+  return {
+    getName: getName,
+    getWeapon: getWeapon
+  }
+})

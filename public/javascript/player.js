@@ -1,17 +1,24 @@
 "use strict";
 
-function Player(name){
-  this._name = name
-}
+var Player = (function(name){
+  var name = name
+  var weapon;
 
-Player.prototype.getName = function(){
-  return this._name
-}
+  var getName = function(){
+    return name
+  };
 
-Player.prototype.setWeapon = function(weapon){
-  this._weapon = weapon
-}
+  var setWeapon = function(selectedWeapon){
+    weapon = selectedWeapon;
+  }
 
-Player.prototype.getWeapon = function(){
-  return this._weapon
-}
+  var getWeapon = function(){
+    return weapon
+  }
+
+  return {
+    getName: getName,
+    setWeapon: setWeapon,
+    getWeapon: getWeapon
+  }
+})

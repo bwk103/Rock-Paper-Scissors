@@ -1,57 +1,78 @@
 "use strict"
 
-function Game (player1, player2 = new Computer()){
-  this._players = [player1, player2]
-  this._currentPlayer = this._players[0]
-}
+var Game = (function(player1, player2 = new Computer()){
+  var players = [player1, player2]
+  var currentPlayer = players[0]
+  var winner;
+  var isTie;
 
-Game.prototype.switchCurrentPlayer = function(){
-  this._currentPlayer = this._otherPlayer(this._currentPlayer)
-}
-
-Game.prototype.setResult = function(){
-  var otherPlayer = this._otherPlayer(this._currentPlayer)
-  if (this._isATie()) {
-    this._isTie = true
-  } else if (this._currentPlayer._weapon.isBetter(otherPlayer._weapon)) {
-    this._winner = this._currentPlayer
-  } else {
-    this._winner = otherPlayer
+  var switchCurrentPlayer = function(){
+    currentPlayer = _otherPlayer(currentPlayer)
   }
-}
 
-Game.prototype.getResult = function(){
-  if (this._isTie) {
-    return "It's a tie"
-  } else {
-    return this._finalMessage()
+  var getCurrentPlayer = function(){
+    return currentPlayer
   }
-}
 
-Game.prototype.isComplete = function(){
-  return this._players.filter(player => {
-    return player._weapon !== undefined
-  }).length === 2;
-}
+  var getTieStatus = function(){
+    return isTie;
+  }
 
-Game.prototype._isATie = function(){
-  var currentPlayerWeapon = this._currentPlayer._weapon.getType()
-  var otherPlayerWeapon = this._otherPlayer(this._currentPlayer)._weapon.getType()
-  return currentPlayerWeapon === otherPlayerWeapon
-}
+  var setResult = function(){
+    var otherPlayer = _otherPlayer(currentPlayer)
+    if (_isATie()) {
+      isTie = true
+    } else if (currentPlayer.getWeapon().isBetter(otherPlayer.getWeapon())) {
+      winner = currentPlayer
+    } else {
+      winner = otherPlayer
+    }
+  }
 
-Game.prototype._otherPlayer = function(originalPlayer){
-  return this._players.filter(player => {
-    return player !== originalPlayer
-  })[0];
-}
+  var getResult = function(){
+    if (getTieStatus()) {
+      return "It's a tie"
+    } else {
+      return _finalMessage()
+    }
+  }
 
-Game.prototype._finalMessage = function(){
-  var loser = this._otherPlayer(this._winner)
-  var winnerName = this._winner.getName();
-  var winnerWeapon = this._winner._weapon.getType();
-  var loserName = loser.getName()
-  var loserWeapon = loser._weapon.getType()
-  var verb = this._winner._weapon.getVerb(loser._weapon);
-  return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
-}
+  var isComplete = function(){
+    return players.filter(player => {
+      return player.getWeapon() !== undefined
+    }).length === 2;
+  }
+
+  var _finalMessage = function(){
+    var loser = _otherPlayer(winner)
+    var winnerName = winner.getName();
+    var winnerWeapon = winner.getWeapon().getType();
+    var loserName = loser.getName()
+    var loserWeapon = loser.getWeapon().getType()
+    var verb = winner.getWeapon().getVerb(loser.getWeapon());
+    return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
+  }
+
+  var _isATie = function(){
+    var currentPlayerWeapon = currentPlayer.getWeapon().getType()
+    var otherPlayerWeapon = _otherPlayer(currentPlayer).getWeapon().getType()
+    return currentPlayerWeapon === otherPlayerWeapon
+  }
+
+  var _otherPlayer = function(originalPlayer){
+    return players.filter(player => {
+      return player !== originalPlayer
+    })[0];
+  }
+
+  return {
+    getCurrentPlayer: getCurrentPlayer,
+    switchCurrentPlayer: switchCurrentPlayer,
+    setResult: setResult,
+    getResult: getResult,
+    isComplete: isComplete,
+    isTie: isTie,
+    getTieStatus,
+    players: players
+  }
+})
