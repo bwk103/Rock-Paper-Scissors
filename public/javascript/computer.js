@@ -2,7 +2,7 @@
 
 function Computer() {
   var name = 'Computer'
-  var weapon = new Weapon(setWeapon())
+  var weapon = Weapon(setWeapon())
 
   function getName(){
     return name

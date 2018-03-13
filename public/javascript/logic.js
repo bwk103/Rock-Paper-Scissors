@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
   var game;
-  var results = new ResultsViewer($("#result-message"));
+  var results = ResultsViewer($("#result-message"));
 
   $('#play').on('click', function(e){
     e.preventDefault()
@@ -12,7 +12,7 @@ $(document).ready(function(){
 
   $('button.weapon').on('click', function(e){
     e.preventDefault();
-    var weapon = new Weapon($(this).attr('data-weapon'))
+    var weapon = Weapon($(this).attr('data-weapon'))
     game.getCurrentPlayer().setWeapon(weapon)
     isGameOver()
   })
@@ -24,12 +24,12 @@ $(document).ready(function(){
   })
 
   function startGame(){
-    var player1 = new Player($('#player1').val())
+    var player1 = Player($('#player1').val())
     if (isPlayer2()){
-      var player2 = new Player($('#player2').val())
-      game = new Game(player1, player2)
+      var player2 = Player($('#player2').val())
+      game = Game(player1, player2)
     } else {
-      game = new Game(player1)
+      game = Game(player1)
     }
   }
 
