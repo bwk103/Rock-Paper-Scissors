@@ -72,7 +72,6 @@ function Game(player1, player2 = new Computer()){
     getResult: getResult,
     isComplete: isComplete,
     getTieStatus,
-    players: players,
-    winner: winner
+    players: players
   }
 }

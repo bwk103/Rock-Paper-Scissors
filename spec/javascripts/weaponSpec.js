@@ -143,4 +143,10 @@ describe('Weapon', () => {
       })
     })
   })
+
+  describe('throws errors', () => {
+    it('if an invalid weapon selection is made', () => {
+      expect(function() {Weapon('gun')} ).toThrowError("That's not a valid weapon!")
+    })
+  })
 })

@@ -23,7 +23,7 @@ function Weapon(type){
                   { name: 'rock', verb: 'vapourises' }
               ]
   };
-  var type = type;
+  var type = checkType(type.toLowerCase())
 
   function getType(){
     return type;
@@ -45,6 +45,14 @@ function Weapon(type){
         }
       })
     return verb
+  }
+
+  function checkType(type){
+    if (rules[type] === undefined){
+      throw new Error("That's not a valid weapon!")
+    } else {
+      return type
+    }
   }
 
   return {

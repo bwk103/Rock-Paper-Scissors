@@ -7,7 +7,7 @@ you bored of playing in front of a mirror and always having
 the match end up as a tie?  Well, now you can play against your computer!
 
 
-My attempt of the Rock, Paper, Scissors, Lizard, Spock challenge set by [Makers
+My attempt at the Rock, Paper, Scissors, Lizard, Spock challenge set by [Makers
 Academy](http://www.makersacademy.com). The crux of the challenge was to mirror the logic developed as a solution to the
 same problem in [Ruby](https://github.com/bwk103/rps-challenge) and develop a
 web application using front end JavaScript.
@@ -27,11 +27,11 @@ run on a localhost, therefore you are going to need the following:
 
 #### Ruby
 
-If you're on Linix or Mac you can probably ignore this step, otherwise download
+If you're on Linux or Mac you can probably ignore this step, otherwise download
 and install Ruby from [here](https://www.ruby-lang.org/en/).
 
 #### Bundler
-The simplest way to install Sinatra will be to use bundler.  Therefore if you've
+The simplest way to install Sinatra will be to use Bundler.  Therefore if you've
 never used it in the past, run the following at the command line:
 
 `gem install bundler`
@@ -69,7 +69,7 @@ with your hands, simply enter both players' names in the text fields and click
 play.
 
 If, having lost one game, you decide to make it 'best of 3/5/7 etc', simply
-click on 'Play Again' to re-live the suspense, drama and excitement all over
+click on 'Play Again' and re-live the suspense, drama and excitement all over
 again.
 
 ![](https://user-images.githubusercontent.com/8667021/36853831-5e21ec48-1d67-11e8-8491-0cd213e9f4c4.png)
