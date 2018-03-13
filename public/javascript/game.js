@@ -1,24 +1,24 @@
 "use strict"
 
-var Game = (function(player1, player2 = new Computer()){
+function Game(player1, player2 = new Computer()){
   var players = [player1, player2]
   var currentPlayer = players[0]
   var winner;
   var isTie;
 
-  var switchCurrentPlayer = function(){
+   function switchCurrentPlayer(){
     currentPlayer = _otherPlayer(currentPlayer)
   }
 
-  var getCurrentPlayer = function(){
+   function getCurrentPlayer(){
     return currentPlayer
   }
 
-  var getTieStatus = function(){
+   function getTieStatus(){
     return isTie;
   }
 
-  var setResult = function(){
+   function setResult(){
     var otherPlayer = _otherPlayer(currentPlayer)
     if (_isATie()) {
       isTie = true
@@ -29,7 +29,7 @@ var Game = (function(player1, player2 = new Computer()){
     }
   }
 
-  var getResult = function(){
+   function getResult(){
     if (getTieStatus()) {
       return "It's a tie"
     } else {
@@ -37,13 +37,13 @@ var Game = (function(player1, player2 = new Computer()){
     }
   }
 
-  var isComplete = function(){
+   function isComplete(){
     return players.filter(player => {
       return player.getWeapon() !== undefined
     }).length === 2;
   }
 
-  var _finalMessage = function(){
+   function _finalMessage(){
     var loser = _otherPlayer(winner)
     var winnerName = winner.getName();
     var winnerWeapon = winner.getWeapon().getType();
@@ -53,13 +53,13 @@ var Game = (function(player1, player2 = new Computer()){
     return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
   }
 
-  var _isATie = function(){
+   function _isATie(){
     var currentPlayerWeapon = currentPlayer.getWeapon().getType()
     var otherPlayerWeapon = _otherPlayer(currentPlayer).getWeapon().getType()
     return currentPlayerWeapon === otherPlayerWeapon
   }
 
-  var _otherPlayer = function(originalPlayer){
+    function _otherPlayer(originalPlayer){
     return players.filter(player => {
       return player !== originalPlayer
     })[0];
@@ -73,6 +73,7 @@ var Game = (function(player1, player2 = new Computer()){
     isComplete: isComplete,
     isTie: isTie,
     getTieStatus,
-    players: players
+    players: players,
+    winner: winner
   }
-})
+}

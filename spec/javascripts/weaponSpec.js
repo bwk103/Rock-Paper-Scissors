@@ -1,11 +1,11 @@
 "use strict";
 
 describe('Weapon', () => {
-  const paper = new Weapon('paper')
-  const rock = new Weapon('rock')
-  const scissors = new Weapon('scissors')
-  const lizard = new Weapon('lizard')
-  const spock = new Weapon('spock')
+  const paper = Weapon('paper')
+  const rock = Weapon('rock')
+  const scissors = Weapon('scissors')
+  const lizard = Weapon('lizard')
+  const spock = Weapon('spock')
 
   describe('defaults', () => {
     it('contains the rules of engagement', () => {

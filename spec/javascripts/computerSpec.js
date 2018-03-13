@@ -1,7 +1,7 @@
 "use strict";
 
 describe('Computer', () => {
-  const computer = new Computer()
+  const computer = Computer()
 
   describe('#getName', () => {
     it('returns Computer', () => {

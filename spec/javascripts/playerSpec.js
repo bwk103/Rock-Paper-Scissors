@@ -2,7 +2,7 @@
 
 describe('Player', () => {
 
-  const player = new Player('Bill')
+  const player = Player('Bill')
 
   describe('#getName', () => {
     it('returns the name of the player', ()=> {

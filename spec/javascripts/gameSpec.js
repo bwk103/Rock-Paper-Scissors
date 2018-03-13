@@ -55,7 +55,7 @@ describe('Game', () => {
     }
   };
 
-  const game = new Game(alan, mia)
+  const game = Game(alan, mia)
 
   describe('defaults', () => {
     it('initializes with two players', () => {
@@ -73,7 +73,7 @@ describe('Game', () => {
 
   describe('#setResult', () => {
     it('checks whether there has been a tie', () => {
-      var tiedGame = new Game(alan, bondo)
+      var tiedGame = Game(alan, bondo)
       tiedGame.setResult()
       expect(tiedGame.getTieStatus()).toBe(true)
     })
@@ -98,7 +98,7 @@ describe('Game', () => {
     })
 
     it('returns tie if the match is a tie', () => {
-      var tiedGame = new Game(alan, bondo)
+      var tiedGame = Game(alan, bondo)
       tiedGame.setResult()
       expect(tiedGame.getResult()).toBe("It's a tie")
     })
@@ -106,12 +106,12 @@ describe('Game', () => {
 
   describe('#isComplete', () => {
     it('returns true when the game is complete', () => {
-      var game = new Game(alan, bondo)
+      var game = Game(alan, bondo)
       expect(game.isComplete()).toBe(true)
     })
 
     it('calls the #getWeapon function on each player', () => {
-      var game = new Game(alan, bondo)
+      var game = Game(alan, bondo)
       spyOn(alan, 'getWeapon').and.callThrough()
       spyOn(bondo, 'getWeapon').and.callThrough()
       game.isComplete()
@@ -120,7 +120,7 @@ describe('Game', () => {
     })
 
     it('returns false when the game is incomplete', () => {
-      var game = new Game(alan, james)
+      var game = Game(alan, james)
       expect(game.isComplete()).toBe(false)
     })
   })

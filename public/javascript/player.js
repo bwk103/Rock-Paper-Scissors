@@ -1,18 +1,18 @@
 "use strict";
 
-var Player = (function(name){
+function Player(name){
   var name = name
   var weapon;
 
-  var getName = function(){
+  function getName(){
     return name
   };
 
-  var setWeapon = function(selectedWeapon){
+  function setWeapon(selectedWeapon){
     weapon = selectedWeapon;
   }
 
-  var getWeapon = function(){
+  function getWeapon(){
     return weapon
   }
 
@@ -20,5 +20,5 @@ var Player = (function(name){
     getName: getName,
     setWeapon: setWeapon,
     getWeapon: getWeapon
-  }
-})
+  };
+}

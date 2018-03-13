@@ -1,14 +1,14 @@
 "use strict";
 
-var Computer = (function() {
+function Computer() {
   var name = 'Computer'
   var weapon = new Weapon(setWeapon())
 
-  var getName = function(){
+  function getName(){
     return name
   }
 
-  var getWeapon = function(){
+  function getWeapon(){
     return weapon
   }
 
@@ -21,4 +21,4 @@ var Computer = (function() {
     getName: getName,
     getWeapon: getWeapon
   }
-})
+}

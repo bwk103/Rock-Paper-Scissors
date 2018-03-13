@@ -1,13 +1,13 @@
 "use strict";
 
-var ResultsViewer = (function(element){
+function ResultsViewer(element){
   var element = element
 
-  var addMessage = function(message){
+  function addMessage(message){
     element.prepend(message)
   };
 
-  var clearMessage = function(){
+  function clearMessage(){
     element.html("")
   }
 
@@ -15,4 +15,4 @@ var ResultsViewer = (function(element){
     addMessage: addMessage,
     clearMessage: clearMessage
   }
-})
+}

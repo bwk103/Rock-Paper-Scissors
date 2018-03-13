@@ -1,6 +1,6 @@
 "use strict";
 
-var Weapon = (function(type){
+function Weapon(type){
   var rules = {
     'rock': [
               { name: 'scissors', verb: 'crushes' },
@@ -25,11 +25,11 @@ var Weapon = (function(type){
   };
   var type = type;
 
-  var getType = function(){
+  function getType(){
     return type;
   }
 
-  var isBetter = function(weapon){
+  function isBetter(weapon){
     var array = [];
     rules[type].forEach(function(item){
       array.push(item.name)
@@ -37,7 +37,7 @@ var Weapon = (function(type){
     return array.includes(weapon.getType())
   }
 
-  var getVerb = function(losing_weapon){
+  function getVerb(losing_weapon){
     var verb;
       rules[type].forEach(function(item){
         if (item.name === losing_weapon.getType()){
@@ -52,4 +52,4 @@ var Weapon = (function(type){
     isBetter: isBetter,
     getVerb: getVerb
   }
-})
+}
