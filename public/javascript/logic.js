@@ -23,15 +23,15 @@ $(document).ready(function(){
     $('#replay').toggleClass('hide')
   })
 
-  function startGame(){
-    var player1 = Player($('#player1').val())
-    if (isPlayer2()){
-      var player2 = Player($('#player2').val())
-      game = Game(player1, player2)
-    } else {
-      game = Game(player1)
-    }
-  }
+  // function startGame(){
+  //   var player1 = Player($('#player1').val())
+  //   if (isPlayer2()){
+  //     var player2 = Player($('#player2').val())
+  //     game = Game(player1, player2)
+  //   } else {
+  //     game = Game(player1)
+  //   }
+  // }
 
   function takeTurn(){
     var weapon = makeWeapon($(this).attr('data-weapon'))
