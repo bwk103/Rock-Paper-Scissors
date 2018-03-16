@@ -30,12 +30,12 @@ describe('View', ()=> {
   describe('#addResult', () => {
     describe('when a game is tied', () => {
       it("adds 'It/'s a tie' to the html", () => {
-        expect(view.addResult(tiedGame)).toBe("<p>It's a tie!</p>")
+        expect(view.addResult(tiedGame)).toBe("It's a tie!")
       })
     })
     describe('when a player wins a game', ()=> {
       it("returns a result message", ()=> {
-        expect(view.addResult(winGame)).toBe("<p>Jack's paper wraps Tom's rock</p>")
+        expect(view.addResult(winGame)).toBe("Jack's paper wraps Tom's rock")
       })
     }, )
   })
