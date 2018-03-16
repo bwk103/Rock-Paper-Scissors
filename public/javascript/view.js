@@ -5,9 +5,9 @@ function View(){
 
   function addResult(game){
     if (game.getTieStatus()){
-      html = "<p>It's a tie!</p>"
+      html = "It's a tie!"
     } else {
-      html = `<p>${winningMesage(game.getResult())}</p>`
+      html = `${winningMesage(game.getResult())}`
     }
     return html
   }

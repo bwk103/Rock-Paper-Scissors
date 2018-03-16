@@ -16,7 +16,7 @@ describe 'Playing the Game', type: :feature do
     find('button[data-weapon="rock"]').click
     expect(page).to have_selector('#result-message', visible: false)
     find('button[data-weapon="paper"]').click
-    expect(page).to have_selector('#result-message', visible: true)
+    expect(page).to have_content("Laura's paper covers James's rock")
     expect(page).to have_selector('#replay', visible: true)
   end
 end

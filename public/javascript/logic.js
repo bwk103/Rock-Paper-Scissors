@@ -13,8 +13,12 @@ $(document).ready(function(){
 
   $('button.weapon').on('click', function(e){
     e.preventDefault();
-    interaction.takeTurn(game.getCurrentPlayer(), $(this).attr('data-weapon'))
-    interaction.isGameOver(game, results)
+    if (game.isComplete()){
+      throw new Error('The game is over!')
+    } else {
+      interaction.takeTurn(game.getCurrentPlayer(), $(this).attr('data-weapon'))
+      interaction.isGameOver(game, results)
+    }
   })
 
   $('#replay').on('click', function(){
