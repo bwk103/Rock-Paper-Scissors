@@ -1,12 +1,7 @@
 language: ruby
 rvm:
   - "2.4.1"
-env:
-  -MOZ_HEADLESS=1
 addons:
-  firefox: latest
+  chrome: beta
 before_install:
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.20.0-linux64.tar.gz
-  - mkdir geckodriver
-  - tar -xzf geckodriver-v0.20.0-linux64.tar.gz -C geckodriver
-  - export PATH=$PATH:$PWD/geckodriver
+  "/Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &"
