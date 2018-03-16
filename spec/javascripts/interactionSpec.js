@@ -3,19 +3,26 @@ describe("Interactions", () => {
 
   beforeEach(()=> {
     interaction = Interaction();
+    rock = {
+      getType : function(){ return 'rock' },
+      getVerb : function(){}
+    }
     player = {
       getName : function(){ return 'James' },
-      getWeapon : function(){},
+      getWeapon : function(){ return rock },
       setWeapon : function(){}
     },
     completeGame = {
       isComplete : function(){ return true },
       switchCurrentPlayer : function(){},
-      setResult : function(){}
+      setResult : function(){},
+      getResult: function(){ return { 'winner': player, 'loser': player } },
+      getTieStatus: function(){}
     },
     incompleteGame = {
       isComplete : function(){ return false },
-      switchCurrentPlayer : function(){}
+      switchCurrentPlayer : function(){},
+      getTieStatus: function(){}
     },
     viewer = {
       addMessage : function(){}

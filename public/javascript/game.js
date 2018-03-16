@@ -3,7 +3,7 @@
 function Game(player1, player2 = new Computer()){
   var players = [player1, player2]
   var currentPlayer = players[0]
-  var winner;
+  var result;
   var isTie;
 
    function switchCurrentPlayer(){
@@ -23,34 +23,20 @@ function Game(player1, player2 = new Computer()){
     if (_isATie()) {
       isTie = true
     } else if (currentPlayer.getWeapon().isBetter(otherPlayer.getWeapon())) {
-      winner = currentPlayer
+      result = { winner: currentPlayer, loser: otherPlayer }
     } else {
-      winner = otherPlayer
+      result = { winner: otherPlayer, loser: currentPlayer }
     }
   }
 
    function getResult(){
-    if (getTieStatus()) {
-      return "It's a tie"
-    } else {
-      return _finalMessage()
-    }
+    return result
   }
 
    function isComplete(){
     return players.filter(player => {
       return player.getWeapon() !== undefined
     }).length === 2;
-  }
-
-   function _finalMessage(){
-    var loser = _otherPlayer(winner)
-    var winnerName = winner.getName();
-    var winnerWeapon = winner.getWeapon().getType();
-    var loserName = loser.getName()
-    var loserWeapon = loser.getWeapon().getType()
-    var verb = winner.getWeapon().getVerb(loser.getWeapon());
-    return `${winnerName}'s ${winnerWeapon} ${verb} ${loserName}'s ${loserWeapon}`
   }
 
    function _isATie(){
@@ -71,7 +57,7 @@ function Game(player1, player2 = new Computer()){
     setResult: setResult,
     getResult: getResult,
     isComplete: isComplete,
-    getTieStatus,
+    getTieStatus: getTieStatus,
     players: players
   }
 }

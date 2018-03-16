@@ -84,25 +84,25 @@ describe('Game', () => {
       expect(alan.getWeapon).toHaveBeenCalled()
     })
 
-    it('determines the winning player', () => {
-      game.setResult()
-      expect(game.getResult()).toBe("Mia's paper wraps Alan's rock");
-    })
+    // it('determines the winning player', () => {
+    //   game.setResult()
+    //   expect(game.getResult()).toBe("Mia's paper wraps Alan's rock");
+    // })
   })
 
-  describe('#getResult', () => {
-    it('returns the winning player', () => {
-      game.setResult()
-      var message = "Mia's paper wraps Alan's rock"
-      expect(game.getResult()).toBe(message)
-    })
-
-    it('returns tie if the match is a tie', () => {
-      var tiedGame = Game(alan, bondo)
-      tiedGame.setResult()
-      expect(tiedGame.getResult()).toBe("It's a tie")
-    })
-  })
+  // describe('#getResult', () => {
+  //   it('returns the winning player', () => {
+  //     game.setResult()
+  //     var message = "Mia's paper wraps Alan's rock"
+  //     expect(game.getResult()).toBe(message)
+  //   })
+  //
+  //   it('returns tie if the match is a tie', () => {
+  //     var tiedGame = Game(alan, bondo)
+  //     tiedGame.setResult()
+  //     expect(tiedGame.getResult()).toBe("It's a tie")
+  //   })
+  // })
 
   describe('#isComplete', () => {
     it('returns true when the game is complete', () => {

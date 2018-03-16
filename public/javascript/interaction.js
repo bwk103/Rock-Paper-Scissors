@@ -25,9 +25,9 @@ function Interaction(){
     }
   }
 
-  function endGame(game, viewer){
+  function endGame(game, viewer, view=View()){
     game.setResult()
-    viewer.addMessage(game.getResult())
+    viewer.addMessage(view.addResult(game))
     $('#replay').toggleClass('hide')
   }
 
