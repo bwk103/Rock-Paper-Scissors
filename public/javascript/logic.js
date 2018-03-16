@@ -3,58 +3,23 @@
 $(document).ready(function(){
   var game;
   var results = ResultsViewer($("#result-message"));
+  var interaction = Interaction()
 
   $('#play').on('click', function(e){
     e.preventDefault()
-    startGame()
     $('.player-details').addClass('hide')
+    game = interaction.startGame($('#player1').val(), $('#player2').val())
   })
 
   $('button.weapon').on('click', function(e){
     e.preventDefault();
-    var weapon = Weapon($(this).attr('data-weapon'))
-    game.getCurrentPlayer().setWeapon(weapon)
-    isGameOver()
+    interaction.takeTurn(game.getCurrentPlayer(), $(this).attr('data-weapon'))
+    interaction.isGameOver(game, results)
   })
 
   $('#replay').on('click', function(){
-    startGame()
+    game = interaction.startGame($('#player1').val(), $('#player2').val())
     results.clearMessage()
     $('#replay').toggleClass('hide')
   })
-
-  // function startGame(){
-  //   var player1 = Player($('#player1').val())
-  //   if (isPlayer2()){
-  //     var player2 = Player($('#player2').val())
-  //     game = Game(player1, player2)
-  //   } else {
-  //     game = Game(player1)
-  //   }
-  // }
-
-  function takeTurn(){
-    var weapon = makeWeapon($(this).attr('data-weapon'))
-    game.getCurrentPlayer.setWeapon(weapon)
-    isGameOver()
-  }
-
-  function endGame(){
-    game.setResult()
-    results.addMessage(game.getResult())
-    $('#replay').toggleClass('hide')
-  }
-
-  function isGameOver(){
-    if (game.isComplete()){
-      endGame()
-    }
-    else {
-      game.switchCurrentPlayer();
-    }
-  }
 })
-
-function isPlayer2(){
-  return $('#player2').val() !== ''
-}
